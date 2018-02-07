@@ -41,7 +41,7 @@ Publicly available web traffic data is made accessible through analytics.usa.gov
 <clip of .csv>
 
 
-I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages and then limit the number of sites with greater than 2000 weekday users. such as:
+I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
 
 1)	usps.com/
 2)	weather.gov/
@@ -52,7 +52,7 @@ I captured the data every 5 minutes without delay for 18 days in an AWS server. 
 7)	defense.gov/
 8)	ssa.gov/
 9)	va.gov/
-10)	 usajobs.com/
+10)	usajobs.com/
 
 <image of collection>
 
@@ -61,24 +61,47 @@ When plotting the time series of the tracked websites we immediately notice the 
 
 These types of websites serve as a prime example of why server management system would place a pre-determined limit on the number of requests a website should accommodate. However, what’s of interest is the spike in activity that occurred during the government shutdown. 
 
-By capturing the peaks of the data, a threshold can be determined. Based on two standard 
+By capturing the typical peaks of the data, a threshold can be determined. Based on two standard deviations above the mean or if the data is not normally distributed, the 75th percentile around the median can be used as threshold.
 
 ### Exploration
+Exploration of the data took several parts:
+1) Checking the sampling was consistent.
+2) Assesing the stationarity.
+3) Evaluating the structure. 
 
 ## Models
-This is an h1 heading
+Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
+
 ### ARIMA
-This is an h2 heading
+The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags combined with weighted sum of errors (MA part)
 ### ARIMAX
-This is an h3 heading
+The ARIMAX is an extension to the ARIMA which includes a covariate to 
 #### Feature Engineering
 ### LSTM
 #### Long-range correlations
+Many complex and dynamical systems possess memory, more specifically called long-range correlations. This idea in a time series can be understood as the variabilty at short time scales being correlated to the variabilty at large time scales. One method for establishing the presence of long-range correlations is with a detrended fluctuation analysis (DFA). More details on the procedure can be found [here.](https://www.physionet.org/physiotools/dfa/).
+
+After plugging the time series into the DFA algorithm the data produced a fractal scaling index (FSI) of 1.32. For context the fracal scaling index can range from 0-2. An FSI > 1.0 is indication of a long-range correlations. 
+
+With the presence of long-range correlations it became clear that and LSTM model would prove appropriate since it can capture long-range dependencies in time series. 
+
 ## Validation
+Validation in machine learning
 ### Multiple Train-Test Splits
+Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. 
+
+
+![Image of traintest]
+(https://github.com/jeevooo/spikeout/blob/master/images/traintest.png)
+
+
 ## Results
+The results of the trian-test splits indicate that the LSTM model performs the best at predicting testing data with various lengths of training data. 
+
+
+
 ## Conclusions
-Spike Out is currently a proof-of-concept tool which provides a basis for detecting anomalies in web-traffic data. Event-related features show drastic changes in the ability to model active users on websites. Additionally, the LSTM appraoch shows the best ability to model web-traffic data, partly due to the presence of long-range correlations. The small sample of spikes with the present dataset limited a true test of anomaly detection reliability. However, at first pass the tool appears functional with the current forecasting approach. As a whole, Spike Out adds value to a web server management systems by provding an indication of potential future anomalies based on current and previous web-volume and additional features. 
+Spike Out is currently a proof-of-concept tool which provides a basis for detecting anomalies in web-traffic data. Event-related features show drastic changes in the ability to model active users on websites. Additionally, the LSTM approach shows the best ability to model web-traffic data, partly due to the presence of long-range correlations. The small sample of spikes with the present dataset limited a true test of anomaly detection reliability. However, at first pass the tool appears functional with the current forecasting approach. As a whole, Spike Out adds value to a web server management systems by provding an indication of potential future anomalies based on current and previous web-volume and additional features. 
 ### Future Work
 Future work will aim to capture more data in order to turn the anomaly detection method into a classification problem. This will allow the tool to be tested using a true machine learning approach. Additionally, with an appropriate resolution in sampling (i.e., non-aggregated data), a more accurate approach for detecting anomalies would be to measure the slope of several forecasts. This is becasue spikes typically have a sharper rise than typical volume rises observed in daily web volume. Lastly, this tool can be expanded by including an automated mehtod for feature engineering by sourcing website related trends, such as tweets, news headlines, and google search results. 
 
