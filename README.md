@@ -97,7 +97,7 @@ Multiple train test splits were used to validate the model. The approach takes a
 ## Results
 The results of the trian-test splits indicate that the LSTM model performs the best at predicting testing data with various lengths of training data. 
 
-
+![comparison](https://github.com/jeevooo/spikeout/blob/master/images/comparison.png)
 
 ## Conclusions
 Spike Out is currently a proof-of-concept tool which provides a basis for detecting anomalies in web-traffic data. Event-related features show drastic changes in the ability to model active users on websites. Additionally, the LSTM approach shows the best ability to model web-traffic data, partly due to the presence of long-range correlations. The small sample of spikes with the present dataset limited a true test of anomaly detection reliability. However, at first pass the tool appears functional with the current forecasting approach. As a whole, Spike Out adds value to a web server management systems by provding an indication of potential future anomalies based on current and previous web-volume and additional features. 
