@@ -18,6 +18,7 @@ Author: Jeev Kiriella
       + [Feature Engineering](#sub-sub-heading-2)
   * [LSTM](#sub-heading-2)
       + [Long-range correlations](#sub-sub-heading-2)
+      + [LSTM creation](#sub-sub-heading-2)
 - [Validation](#heading-3)
   * [Multiple Train-Test Splits](#sub-heading-3)
  - [Results](#heading-4)
@@ -54,10 +55,12 @@ I captured the data every 5 minutes without delay for 18 days in an AWS server. 
 9)	va.gov/
 10)	usajobs.com/
 
-<image of collection>
-
 ### Time Series
-When plotting the time series of the tracked websites we immediately notice the presence of weekly trends in the data. To be more specific, the peak number of users during the weekdays are greater than on the weekends (see Figure 1).  We also see that the time series is fairly stationary (i.e., does not have a changing mean over time Figure 2). An augmented Dickey-Fuller test (ADF) provides a confirmation of this observation. 
+When plotting the time series of the tracked websites we immediately notice the presence of weekly trends in the data. To be more specific, the peak number of users during the weekdays are greater than on the weekends.  We also see that the time series is fairly stationary (i.e., does not have a changing mean over time). An augmented Dickey-Fuller test (ADF) provides a confirmation of this observation. 
+
+![time-series](https://github.com/jeevooo/spikeout/blob/master/images/time-series.png)
+
+![rollingmean](https://github.com/jeevooo/spikeout/blob/master/images/rollingmean.png)
 
 These types of websites serve as a prime example of why server management system would place a pre-determined limit on the number of requests a website should accommodate. However, what’s of interest is the spike in activity that occurred during the government shutdown. 
 
@@ -73,11 +76,24 @@ Exploration of the data took several parts:
 Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
 
 ### ARIMA
-The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). 
+The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(6). When fitting the model the ARIMA tended to have a poor fit. 
+
+![ARIMA2](https://github.com/jeevooo/spikeout/blob/master/images/ARIMA2.png)
+
 ### ARIMAX
 The ARIMAX is an extension to the ARIMA which includes a exogenous covariates. The covariate is combined with the linear equation as a weighted value. The inclusion of a covariates changes the data to a multivariate dataset. 
 #### Feature Engineering
 In order to establish a covariate with the data I thought to encode the dates of government shutdown. In order to verify that the government shutdown was an appropriate covariate, I performed a Granger Causality test. A significant F-test was found showing that the government shutdown is a predictor of active users. The opposite was also tested (i.e., whether active users drive the shut down) and was found to be not significant. ` 
+
+Government shutdown driving active users:
+![shutdriveuser](https://github.com/jeevooo/spikeout/blob/master/images/shutdriveuser.png)
+
+Active useres driving government shutdown:
+![userdriveshut](https://github.com/jeevooo/spikeout/blob/master/images/userdriveshut.png)
+
+Following the inclusions of the feature in the dataset and then fitting an ARIMAX model the fit become much better at capturing the dynamics of the time series. 
+
+![ARIMAX](https://github.com/jeevooo/spikeout/blob/master/images/ARIMAX.png)
 
 ### LSTM
 #### Long-range correlations
@@ -87,13 +103,15 @@ After plugging the time series into the DFA algorithm the data produced a fracta
 
 ![dfa](https://github.com/jeevooo/spikeout/blob/master/images/dfa.png)
 
-With the presence of long-range correlations it became clear that and LSTM model would prove appropriate since it can capture long-range dependencies in time series. 
+With the presence of long-range correlations it became clear that and LSTM model would be appropriate since it can capture long-range dependencies in time series. 
+
+#### LSTM creation
+Details to follow
 
 ## Validation
 Validation in machine learning
 ### Multiple Train-Test Splits
 Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. 
-
 
 ![traintest](https://github.com/jeevooo/spikeout/blob/master/images/traintest.png)
 
