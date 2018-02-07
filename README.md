@@ -91,8 +91,7 @@ Validation in machine learning
 Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. 
 
 
-![Image of traintest]
-(https://github.com/jeevooo/spikeout/blob/master/images/traintest.png)
+![traintest](https://github.com/jeevooo/spikeout/blob/master/images/traintest.png)
 
 
 ## Results
