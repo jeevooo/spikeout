@@ -60,8 +60,6 @@ When plotting the time series of the tracked websites we immediately notice the 
 
 ![time-series](https://github.com/jeevooo/spikeout/blob/master/images/time-series.png)
 
-![rollingmean](https://github.com/jeevooo/spikeout/blob/master/images/rollingmean.png)
-
 These types of websites serve as a prime example of why server management system would place a pre-determined limit on the number of requests a website should accommodate. However, what’s of interest is the spike in activity that occurred during the government shutdown. 
 
 By capturing the typical peaks of the data, a threshold can be determined. Based on two standard deviations above the mean or if the data is not normally distributed, the 75th percentile around the median can be used as threshold.
@@ -69,8 +67,18 @@ By capturing the typical peaks of the data, a threshold can be determined. Based
 ### Exploration
 Exploration of the data took several parts:
 1) Checking the sampling was consistent.
+
+![samplingtimeplot1](https://github.com/jeevooo/spikeout/blob/master/images/smaplingtimeplot1.png) --> ![samplingtimeplot12](https://github.com/jeevooo/spikeout/blob/master/images/smaplingtimeplot2.png)
+
 2) Assesing the stationarity.
+
+![rollingmean](https://github.com/jeevooo/spikeout/blob/master/images/rollingmean.png)
+A fairly consisten mean and variation were present, but clear weekday/weekend trends were evident.
+
 3) Evaluating the structure. 
+
+![lagplot](https://github.com/jeevooo/spikeout/blob/master/images/lag_plot.png)
+Clear structure is present in the data demonstrating non-random process.
 
 ## Models
 Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
