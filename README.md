@@ -73,11 +73,13 @@ Exploration of the data took several parts:
 2) Assesing the stationarity.
 
 ![rollingmean](https://github.com/jeevooo/spikeout/blob/master/images/rollingmean.png)
+
 A fairly consisten mean and variation were present, but clear weekday/weekend trends were evident.
 
 3) Evaluating the structure. 
 
 ![lagplot](https://github.com/jeevooo/spikeout/blob/master/images/lag_plot.png)
+
 Clear structure is present in the data demonstrating non-random process.
 
 ## Models
