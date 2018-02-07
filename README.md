@@ -38,7 +38,7 @@ Spike Out is a tool which uses forecasts of active users on a particular website
 ## The Data
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP.] (https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
 
-<clip of .csv>
+![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
 
 
 I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
@@ -73,15 +73,19 @@ Exploration of the data took several parts:
 Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
 
 ### ARIMA
-The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags combined with weighted sum of errors (MA part)
+The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). 
 ### ARIMAX
-The ARIMAX is an extension to the ARIMA which includes a covariate to 
+The ARIMAX is an extension to the ARIMA which includes a exogenous covariates. The covariate is combined with the linear equation as a weighted value. The inclusion of a covariates changes the data to a multivariate dataset. 
 #### Feature Engineering
+In order to establish a covariate with the data I thought to encode the dates of government shutdown. In order to verify that the government shutdown was an appropriate covariate, I performed a Granger Causality test. A significant F-test was found showing that the government shutdown is a predictor of active users. The opposite was also tested (i.e., whether active users drive the shut down) and was found to be not significant. ` 
+
 ### LSTM
 #### Long-range correlations
-Many complex and dynamical systems possess memory, more specifically called long-range correlations. This idea in a time series can be understood as the variabilty at short time scales being correlated to the variabilty at large time scales. One method for establishing the presence of long-range correlations is with a detrended fluctuation analysis (DFA). More details on the procedure can be found [here.](https://www.physionet.org/physiotools/dfa/).
+Many complex and dynamical systems possess memory, more specifically called long-range correlations. This idea in a time series can be understood as the variabilty at short time scales being correlated to the variabilty at large time scales. One method for establishing the presence of long-range correlations is with a detrended fluctuation analysis (DFA). More details on the procedure can be found [here.](https://www.physionet.org/physiotools/dfa/)
 
-After plugging the time series into the DFA algorithm the data produced a fractal scaling index (FSI) of 1.32. For context the fracal scaling index can range from 0-2. An FSI > 1.0 is indication of a long-range correlations. 
+After plugging the time series into the DFA algorithm the data produced a fractal scaling index (FSI) of 1.32. The FSI is calculated by taking the slope of the log-log plot of the window size versus mangitude of fluctuation. For context the fracal scaling index can range from 0-2. An FSI > 1.0 is indication of a long-range correlations. 
+
+![dfa](https://github.com/jeevooo/spikeout/blob/master/images/dfa.png)
 
 With the presence of long-range correlations it became clear that and LSTM model would prove appropriate since it can capture long-range dependencies in time series. 
 
@@ -92,7 +96,6 @@ Multiple train test splits were used to validate the model. The approach takes a
 
 
 ![traintest](https://github.com/jeevooo/spikeout/blob/master/images/traintest.png)
-
 
 ## Results
 The results of the trian-test splits indicate that the LSTM model performs the best at predicting testing data with various lengths of training data. 
