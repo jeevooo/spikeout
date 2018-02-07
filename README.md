@@ -120,6 +120,12 @@ The results of the trian-test splits indicate that the LSTM model performs the b
 
 ![comparison](https://github.com/jeevooo/spikeout/blob/master/images/comparison.png)
 
+Finally to test whether the LSTM on detecting a spike the data, the peaks (blunted if a spike to avoid skew), was used to define the median. The 75 percentile was then used as the threshold. 
+
+![peaks](https://github.com/jeevooo/spikeout/blob/master/images/peaks.png)
+
+The 75th percentile corresponded to 30298 active users and the predicted value of the timestep at the spike was 30500 active users. According to that threshold and prediction algorithm accurately predicted a spike occurence. 
+
 ## Conclusions
 Spike Out is currently a proof-of-concept tool which provides a basis for detecting anomalies in web-traffic data. Event-related features show drastic changes in the ability to model active users on websites. Additionally, the LSTM approach shows the best ability to model web-traffic data, partly due to the presence of long-range correlations. The small sample of spikes with the present dataset limited a true test of anomaly detection reliability. However, at first pass the tool appears functional with the current forecasting approach. As a whole, Spike Out adds value to a web server management systems by provding an indication of potential future anomalies based on current and previous web-volume and additional features. 
 ### Future Work
