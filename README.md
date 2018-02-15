@@ -87,7 +87,9 @@ To narrow the field of websites being reported by analytics.usa.gov/, I decided 
 ### Time Series
 When plotting the time series of the tracked websites we immediately notice the presence of weekly trends in the data. To be more specific, the peak number of users during the weekdays are greater than on the weekends.  We also see that the time series is fairly stationary (i.e., does not have a changing mean over time). An augmented Dickey-Fuller test (ADF) provides a confirmation of this observation. 
 
-![time-series](https://github.com/jeevooo/spikeout/blob/master/images/time-series.png)
+<p align='center'>
+<img src='images/time-series.png' width='500'>
+</p>
 
 These types of websites serve as a prime example of why server management system would place a pre-determined limit on the number of requests a website should accommodate. However, what’s of interest is the spike in activity that occurred during the government shutdown. 
 
