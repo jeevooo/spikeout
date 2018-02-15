@@ -59,7 +59,7 @@ For solution 2, using the residuals inherently places emphasis on modeling the d
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”:
 
 <p align='center'>
-<img src='images/clipanalyticsusa.png' width='450'>
+<img src='images/clipanalyticsusa.png' width='500'>
 </p>
 
 
@@ -67,7 +67,9 @@ A definition of "active Users" could not be found on the description of the init
 
 I captured the data every 5 minutes without delay for 18 days in an AWS server. Below is the data pipeline I created:
 
-![datacollection2](https://github.com/jeevooo/spikeout/blob/master/images/datacollection2.png)
+<p align='center'>
+<img src='images/datacollection2.png' width='500'>
+</p>
 
 To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
 
