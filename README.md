@@ -9,6 +9,7 @@ Author: Jeev Kiriella
 - [The Problem: Service Interruptions](#heading)
   * [Managing Server Requests](#sub-heading)
   * [Spike Out](#sub-heading)
+  * [Goals & Questions](#sub-heading)
   * [Solutions to the problem](#sub-heading)
     +  [Pros and Cons](#sub-sub-heading))
 - [The Data](#heading-1)
@@ -38,6 +39,13 @@ Currently, servers are designed accomdate requests up to a limit. A pre-determin
 ### Spike Out
 Spike Out is a tool which uses residuals from model to flag anomalous activity with website visitors. Spike Out is a project I attemped as data science fellow at Insight Data Science. 
 
+### Goals & Questions
+
+1) Find model that captures dynaimcs of web-traffic accurately.
+  - What is the most approproate time-series models to capture the dynamics of web-traffic data?
+2) Predict/Flag anomalous events in the data based on a selected threshold.
+  - Based on the current data, what is the best threshold approach?
+
 ### Potential Solutions to the problem
 1) Use a static threshold based on typical peak activity. 
 2) Use residuals from model to detect change in webtraffic behaviour. 
@@ -48,11 +56,13 @@ For solution 1, captuing the peaks can allow us to use forecasted values on the 
 For solution 2, using the residuals inherently places emphasis on modeling the data accurately. Assuming the data can be modeled accurately a second limitation is the lag betwen detection and action. More specifically, as time progresses obersvations will get added to the data and the residual between the actual and predicted value will then inform action. From a business perspective this does lead to a cost because newly acquired data can be anomalous and therefore action will occur after the start of an anomalous event.
 
 ## The Data
-Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
+Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”:
 
 
 ![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
 
+
+A definition of "active Users" could not be found on the description of the initiative. The working defintion of for active users (AU)  for this analysis is: users that navigated to the page of interest and also navigated to a corresponding link on the page of interest. 
 
 I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
 
@@ -80,7 +90,7 @@ Taking a look at the usps.com website activity:
 
 
 
-By capturing the typical peaks of the data, a threshold can be determined. Based on two standard deviations above the mean or if the data is not normally distributed, the 75th percentile around the median can be used as threshold.
+Looking at the 
 
 ### Exploration
 Exploration of the data took several parts:
