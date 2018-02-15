@@ -66,8 +66,6 @@ A definition of "active Users" could not be found on the description of the init
 
 I captured the data every 5 minutes without delay for 18 days in an AWS server. 
 
-![datacollection](https://github.com/jeevooo/spikeout/blob/master/images/datacollection.png)
-
 To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
 
 1)	usps.com/
