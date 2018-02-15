@@ -40,7 +40,7 @@ Spike Out is a tool which uses residuals from model to flag anomalous activity w
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP.](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
 
 <p align="center">
-  <img /> ![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
+  <![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png) />
 </p>
 
 
