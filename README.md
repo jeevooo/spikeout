@@ -1,6 +1,6 @@
 # Spike Out
 
-A tool using forecasts in web traffic to detect anomalous events.
+A tool to flag anomalous events.
 
 Author: Jeev Kiriella
 
@@ -34,12 +34,14 @@ Business' use websites as a tool to interact with their users. When a website's 
 Currently, servers are designed accomdate requests up to a limit. A pre-determined limit on the number of requsts is set by web server manager at which point the server stops recieving requsts and forms a [cue.](https://serverfault.com/questions/140897/how-does-too-many-requests-make-a-server-crash/) As a result a user will often see a browswer response that reads "503 Service Unavailable". For the purpose of this blog we are focusing on legitimate requests to the website and not another instance of this occurrence that is known as a denial-of-service attack [(DOS).](https://en.wikipedia.org/wiki/Denial-of-service_attack) Assuming that the requests are legitimate and despite their best-efforts to set the limit appropriately, web sites have still have service interruptions in recent history (LINKS).
 
 ### Spike Out
-Spike Out is a tool which uses forecasts of active users on a particular website, in order to detect whether an anomalous event will occur. Spike Out is a project I attemped as data science fellow at Insight Data Science. 
+Spike Out is a tool which uses residuals from model to flag anomalous activity with website visitors. Spike Out is a project I attemped as data science fellow at Insight Data Science. 
 
 ## The Data
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP.](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
 
-![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
+<p align="center">
+  <img /> ![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
+</p>
 
 
 I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
