@@ -9,6 +9,8 @@ Author: Jeev Kiriella
 - [The Problem: Service Interruptions](#heading)
   * [Managing Server Requests](#sub-heading)
   * [Spike Out](#sub-heading)
+  * [Solutions to the problem](#sub-heading)
+    +  [Pros and Cons](#sub-sub-heading))
 - [The Data](#heading-1)
   * [Time Series](#sub-heading-1)
   * [Exploration](#sub-heading-1)
@@ -31,17 +33,25 @@ Author: Jeev Kiriella
 Business' use websites as a tool to interact with their users. When a website's service is unavailable it cost the [business revenue](https://www.forbes.com/sites/kellyclay/2013/08/19/amazon-com-goes-down-loses-66240-per-minute/#6c0b5db5495c). It becomes imperative that business' can maintain their website from service interruptions and to constantly be in connection with their customers. However, there are moments when unseen circumstances lead to sharp changes in users visiting the website. These sharp changes can be understood as anomalous spikes in the typical daily trends of webpage visits. Forecasting anomalies can lead to efficient server management. More specifically, it can allow web server companies to reduce service interruptions, by knowing in advance whether there is a pressing need to accomodate more server requests. 
 
 ### Managing Server Requests
-Currently, servers are designed accomdate requests up to a limit. A pre-determined limit on the number of requsts is set by web server manager at which point the server stops recieving requsts and forms a [cue.](https://serverfault.com/questions/140897/how-does-too-many-requests-make-a-server-crash/) As a result a user will often see a browswer response that reads "503 Service Unavailable". For the purpose of this blog we are focusing on legitimate requests to the website and not another instance of this occurrence that is known as a denial-of-service attack [(DOS).](https://en.wikipedia.org/wiki/Denial-of-service_attack) Assuming that the requests are legitimate and despite their best-efforts to set the limit appropriately, web sites have still have service interruptions in recent history (LINKS).
+Currently, servers are designed accomdate requests up to a limit. A pre-determined limit on the number of requsts is set by web server manager at which point the server stops recieving requsts and forms a [cue.](https://serverfault.com/questions/140897/how-does-too-many-requests-make-a-server-crash/) As a result a user will often see a browswer response that reads "503 Service Unavailable". For the purpose of this context we are focusing on legitimate requests to the website and not another instance of this occurrence that is known as a denial-of-service attack [(DOS).](https://en.wikipedia.org/wiki/Denial-of-service_attack) Assuming that the requests are legitimate and despite their best-efforts to set the limit appropriately, web sites have still have service interruptions in recent history (LINKS).
 
 ### Spike Out
 Spike Out is a tool which uses residuals from model to flag anomalous activity with website visitors. Spike Out is a project I attemped as data science fellow at Insight Data Science. 
 
-## The Data
-Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP.](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
+### Potential Solutions to the problem
+1) Use a static threshold based on typical peak activity. 
+2) Use residuals from model to detect change in webtraffic behaviour. 
 
-<p align="center">
-  <![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png) />
-</p>
+#### Pros and Cons
+For solution 1, captuing the peaks can allow us to use forecasted values on the actual data to predict a potential anomalies. In this case we are limiting the lag time between the occurence of an anomaly and 
+
+For solution 2, using the residuals inherently places emphasis on modeling the data accurately. Assuming the data can be modeled accurately it does  
+
+## The Data
+Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
+
+
+![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
 
 
 I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
