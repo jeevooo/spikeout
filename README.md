@@ -43,9 +43,9 @@ Spike Out is a tool which uses residuals from model to flag anomalous activity w
 2) Use residuals from model to detect change in webtraffic behaviour. 
 
 #### Pros and Cons
-For solution 1, captuing the peaks can allow us to use forecasted values on the actual data to predict a potential anomalies. In this case we are limiting the lag time between the occurence of an anomaly and 
+For solution 1, captuing the peaks can allow us to use forecasted values on the actual data to predict a potential anomalies. In this case we are limiting the lag time between the detection of an anomaly and action to handle the anomaly. However, there is the question of what peaks are typical and atypical. This choice can potentially inflate the threshold and lead to prediction of false negatives (i.e., missing true anomalies). From a business perspective this approach does allow potential savings but being premptive but limits the accuracy of detecting anomalies and can potentially be a risk for adding costs than actual savings.
 
-For solution 2, using the residuals inherently places emphasis on modeling the data accurately. Assuming the data can be modeled accurately it does  
+For solution 2, using the residuals inherently places emphasis on modeling the data accurately. Assuming the data can be modeled accurately a second limitation is the lag betwen detection and action. More specifically, as time progresses obersvations will get added to the data and the residual between the actual and predicted value will then inform action. From a business perspective this does lead to a cost because newly acquired data can be anomalous and therefore action will occur after the start of an anomalous event.
 
 ## The Data
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”. 
@@ -74,6 +74,12 @@ When plotting the time series of the tracked websites we immediately notice the 
 
 These types of websites serve as a prime example of why server management system would place a pre-determined limit on the number of requests a website should accommodate. However, what’s of interest is the spike in activity that occurred during the government shutdown. 
 
+Taking a look at the usps.com website activity:
+
+
+
+
+
 By capturing the typical peaks of the data, a threshold can be determined. Based on two standard deviations above the mean or if the data is not normally distributed, the 75th percentile around the median can be used as threshold.
 
 ### Exploration
@@ -84,7 +90,7 @@ Exploration of the data took several parts:
 
 2) Assesing the stationarity.
 
-![rollingmean](https://github.com/jeevooo/spikeout/blob/master/images/rollingmean.png)
+![rollowingmeanvar](https://github.com/jeevooo/spikeout/blob/master/images/rollowingmeanvar.png)
 
 A fairly consisten mean and variation were present, but clear weekday/weekend trends were evident.
 
