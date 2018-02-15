@@ -58,8 +58,9 @@ For solution 2, using the residuals inherently places emphasis on modeling the d
 ## The Data
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”:
 
-
-![clipanalyticsusa](https://github.com/jeevooo/spikeout/blob/master/images/clipanalyticsusa.png)
+<p align='center'>
+<img src='images/clipanalyticsusa.png' width='450'>
+</p>
 
 
 A definition of "active Users" could not be found on the description of the initiative. The working defintion of for active users (AU)  for this analysis is: users that navigated to the page of interest and also navigated to a corresponding link on the page of interest. 
