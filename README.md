@@ -64,7 +64,11 @@ Publicly available web traffic data is made accessible through analytics.usa.gov
 
 A definition of "active Users" could not be found on the description of the initiative. The working defintion of for active users (AU)  for this analysis is: users that navigated to the page of interest and also navigated to a corresponding link on the page of interest. 
 
-I captured the data every 5 minutes without delay for 18 days in an AWS server. To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
+I captured the data every 5 minutes without delay for 18 days in an AWS server. 
+
+![datacollection](https://github.com/jeevooo/spikeout/blob/master/images/datacollection.png)
+
+To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
 
 1)	usps.com/
 2)	weather.gov/
@@ -86,17 +90,17 @@ These types of websites serve as a prime example of why server management system
 
 Taking a look at the usps.com website activity:
 
+![uspspikes](https://github.com/jeevooo/spikeout/blob/master/images/uspspikes.png)
 
-
-
-
-Looking at the 
+Looking at the data we notice there are clear spikes in the data that are event-related such as, 1) government-shutdown and, 2) the release of a stamp dedicated to Lena Horne. 
 
 ### Exploration
 Exploration of the data took several parts:
 1) Checking the sampling was consistent.
 
 ![samplingtimeplot1](https://github.com/jeevooo/spikeout/blob/master/images/smaplingtimeplot1.png) --> ![samplingtimeplot12](https://github.com/jeevooo/spikeout/blob/master/images/smaplingtimeplot2.png)
+
+The figure to the left 
 
 2) Assesing the stationarity.
 
