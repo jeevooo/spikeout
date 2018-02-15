@@ -100,7 +100,7 @@ Exploration of the data took several parts:
 
 ![samplingtimeplot1](https://github.com/jeevooo/spikeout/blob/master/images/smaplingtimeplot1.png) --> ![samplingtimeplot12](https://github.com/jeevooo/spikeout/blob/master/images/smaplingtimeplot2.png)
 
-The figure to the left 
+The figure to the left demonstrates that the sampling was not consistent. Therefore, I aggregated that data by hour by summing the number of visotors within each hour. I chose this method instead of using the mean because it would add an artifact (spike) to the data. 
 
 2) Assesing the stationarity.
 
