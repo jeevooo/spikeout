@@ -52,7 +52,7 @@ Spike Out is a tool which uses residuals from model to flag anomalous activity w
 1) Use a static threshold based on typical peak activity. 
 2) Use residuals from model to detect change in webtraffic behaviour. 
 
-#### Pros and Cons
+#### Pros and Cons<a name="sub-sub-heading1"></a>
 For solution 1, captuing the peaks can allow us to use forecasted values on the actual data to predict a potential anomalies. In this case we are limiting the lag time between the detection of an anomaly and action to handle the anomaly. However, there is the question of what peaks are typical and atypical. This choice can potentially inflate the threshold and lead to prediction of false negatives (i.e., missing true anomalies). From a business perspective this approach does allow potential savings but being premptive but limits the accuracy of detecting anomalies and can potentially be a risk for adding costs than actual savings.
 
 For solution 2, using the residuals inherently places emphasis on modeling the data accurately. Assuming the data can be modeled accurately a second limitation is the lag betwen detection and action. More specifically, as time progresses obersvations will get added to the data and the residual between the actual and predicted value will then inform action. From a business perspective this does lead to a cost because newly acquired data can be anomalous and therefore action will occur after the start of an anomalous event.
