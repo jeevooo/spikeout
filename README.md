@@ -1,5 +1,5 @@
 <p align='left'>
-<img src='images/spikeout.png' width='250'>
+<img src='images/spikeout.png' width='100'>
 </p> 
 
 # Spike Out 
