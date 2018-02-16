@@ -16,20 +16,20 @@
   * [Solutions to the problem](#sub-heading4)
     +  [Pros and Cons](#sub-sub-heading1)
 - [The Data](#heading-1)
-  * [Time Series](#sub-heading-1)
-  * [Data Challenges and Exploration](#sub-heading-1)
+  * [Time Series](#sub-heading-11)
+  * [Data Challenges and Exploration](#sub-heading-12)
 - [Models](#heading-2)
-  * [ARIMA](#sub-heading-2)
-  * [ARIMAX](#sub-heading-2)
-      + [Feature Engineering](#sub-sub-heading-2)
-  * [LSTM](#sub-heading-2)
-      + [Long-range correlations](#sub-sub-heading-2)
-      + [LSTM creation](#sub-sub-heading-2)
+  * [ARIMA](#sub-heading-21)
+  * [ARIMAX](#sub-heading-22)
+      + [Feature Engineering](#sub-sub-heading-221)
+  * [LSTM](#sub-heading-23)
+      + [Long-range correlations](#sub-sub-heading-231)
+      + [LSTM creation](#sub-sub-heading-232)
 - [Validation](#heading-3)
-  * [Multiple Train-Test Splits](#sub-heading-3)
+  * [Multiple Train-Test Splits](#sub-heading-31)
  - [Results](#heading-4)
  - [Conclusions](#heading-5)
-  * [Future Work](#sub-heading-5)
+  * [Future Work](#sub-heading-51)
 
 ----
 
@@ -59,7 +59,7 @@ For solution 2, using the residuals inherently places emphasis on modeling the d
 
 ----
 
-## The Data
+## The Data<a name="heading-1"></a>
 Publicly available web traffic data is made accessible through analytics.usa.gov. A description of the initiative can be found at [DAP](https://www.digitalgov.gov/services/dap/). The site reports various metrics (i.e., active users) of a number of governmental websites every 5 minutes. Here is an example of the obtainable .csv file made by the website on “active users”:
 
 <p align='center'>
@@ -87,7 +87,7 @@ To narrow the field of websites being reported by analytics.usa.gov/, I decided 
 9)	va.gov/
 10)	usajobs.com/
 
-### Time Series
+### Time Series<a name="sub-heading-1"></a>
 When plotting the time series of the tracked websites we immediately notice the presence of weekly trends in the data. To be more specific, the peak number of users during the weekdays are greater than on the weekends.  We also see that the time series is fairly stationary (i.e., does not have a changing mean over time). An augmented Dickey-Fuller test (ADF) provides a confirmation of this observation. 
 
 <p align='center'>
