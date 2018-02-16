@@ -1,10 +1,10 @@
 <p align='left'>
-<img src='images/spikeout.png' width='100'>
+<img src='images/spikeout.png' width='75'>
 </p> 
 
 # Spike Out 
 ### A tool to flag anomalous events
-### Author: Jeev Kiriella
+### Jeev Kiriella
 
 ----
 
