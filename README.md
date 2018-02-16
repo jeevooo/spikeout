@@ -109,17 +109,15 @@ The usps.com/ data will be used for demonstrating the analysis performed in this
 Exploration of the data took several parts:
 1) Checking the sampling was consistent.
 
-<p align='left'>
+<p align='center'>
 <img src='images/samplingtimeplot1.png' width='500'>
 </p>
 
-**--->**
-
-<p align='right'>
+<p align='center'>
 <img src='images/samplingtimeplot2.png' width='500'>
 </p>
 
-The figure to the left demonstrates that the sampling was not consistent. Therefore, I aggregated that data by hour by summing the number of visotors within each hour. I chose this method instead of using the mean because it would add an artifact (spike) to the data. 
+The figure on top demonstrates that the sampling was not consistent. Therefore, I aggregated that data by the hour, by summing the number of visotors within each hour. This did reduce the number of data points substantially but, I chose this method instead of using the mean because it would add an artifact (spike) to the data. 
 
 2) Assesing the stationarity.
 
@@ -174,9 +172,9 @@ Many complex and dynamical systems possess memory, more specifically called long
 
 After plugging the time series into the DFA algorithm the data produced a fractal scaling index (FSI) of 1.32. The FSI is calculated by taking the slope of the log-log plot of the window size versus mangitude of fluctuation. For context the fracal scaling index can range from 0-2. An FSI > 1.0 is indication of a long-range correlations. 
 
-
-
-![dfa](https://github.com/jeevooo/spikeout/blob/master/images/dfa.png)
+<p align='center'>
+<img src='images/dfa.png' width='500'>
+</p>
 
 With the presence of long-range correlations it became clear that and LSTM model would be appropriate since it can capture long-range dependencies in time series. 
 
