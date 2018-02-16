@@ -1,7 +1,6 @@
 # Spike Out
-
-## A tool to flag anomalous events
-## Author: Jeev Kiriella
+### A tool to flag anomalous events
+### Author: Jeev Kiriella
 
 ----
 
