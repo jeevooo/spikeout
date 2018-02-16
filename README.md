@@ -113,11 +113,7 @@ Exploration of the data took several parts:
 1) Checking the sampling was consistent.
 
 <p align='center'>
-<img src='images/samplingtimeplot1.png' width='500'>
-</p>
-
-<p align='center'>
-<img src='images/samplingtimeplot2.png' width='500'>
+<img src='images/samplingcomb.png' width='500'>
 </p>
 
 The figure on top demonstrates that the sampling was not consistent. Therefore, I aggregated that data by the hour, by summing the number of visotors within each hour. This did reduce the number of data points substantially but, I chose this method instead of using the mean because it would add an artifact (spike) to the data. 
