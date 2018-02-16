@@ -131,7 +131,7 @@ A fairly consisten mean and variation were present, but clear weekday/weekend tr
 3) Evaluating the structure. 
 
 <p align='center'>
-<img src='images/lag_plot.png' width='500'>
+<img src='images/lag_plot.png' width='400'>
 </p>
 
 Clear structure is present in the data demonstrating non-random process.
@@ -187,12 +187,16 @@ Validation in machine learning is typically done with cross-validation. Due to t
 
 Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. 
 
-![traintest](https://github.com/jeevooo/spikeout/blob/master/images/traintest.png)
+<p align='center'>
+<img src='images/traintest.png' width='400'>
+</p>
 
 ## Results
 The results of the trian-test splits indicate that the LSTM model performs the best at predicting testing data with various lengths of training data. 
 
-![comparison](https://github.com/jeevooo/spikeout/blob/master/images/comparison.png)
+<p align='center'>
+<img src='images/comparison.png' width='400'>
+</p>
 
 Finally to test whether the LSTM on detecting a spike the data, the peaks (blunted if a spike to avoid skew), was used to define the median. The 75 percentile was then used as the threshold. 
 
