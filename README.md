@@ -1,4 +1,4 @@
-<p align='left'>
+<p align='center'>
 <img src='images/spikeout.png' width='75'>
 </p> 
 
