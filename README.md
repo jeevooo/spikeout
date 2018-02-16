@@ -104,7 +104,11 @@ Below is the univariate time series data for usps.com/:
 
 Looking at the data we notice there are clear spikes in the data that are event-related such as, 1) government-shutdown and, 2) the release of a stamp dedicated to Lena Horne. 
 
-The usps.com/ data will be used for demonstrating the analysis performed in this blog. Specifically the clip of data used to model the dynamics web-traffic is in red. The green will be used 
+The usps.com/ data will be used for demonstrating the analysis performed in this blog. Specifically the clip of data used to model the dynamics web-traffic is in red. The green will be used to test out of sample predictions.
+
+<p align='center'>
+<img src='images/uspstraintest.png' width='500'>
+</p>
 
 ### Data Challenges and Exploration
 Exploration of the data took several parts:
@@ -127,7 +131,7 @@ A fairly consisten mean and variation were present, but clear weekday/weekend tr
 3) Evaluating the structure. 
 
 <p align='center'>
-<img src='images/lagplot.png' width='500'>
+<img src='images/lag_plot.png' width='500'>
 </p>
 
 Clear structure is present in the data demonstrating non-random process.
