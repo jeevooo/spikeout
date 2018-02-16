@@ -16,7 +16,7 @@
   * [Time Series](#sub-heading-1)
   * [Data Challenges and Exploration](#sub-heading-1)
 - [Models](#heading-2)
-  * [Arima](#sub-heading-2)
+  * [ARIMA](#sub-heading-2)
   * [ARIMAX](#sub-heading-2)
       + [Feature Engineering](#sub-sub-heading-2)
   * [LSTM](#sub-heading-2)
