@@ -10,11 +10,11 @@
 ## **Table of Contents**
   
 - [The Problem: Service Interruptions](#heading)
-  * [Managing Server Requests](#sub-heading)
-  * [Spike Out](#sub-heading)
-  * [Goals & Questions](#sub-heading)
-  * [Solutions to the problem](#sub-heading)
-    +  [Pros and Cons](#sub-sub-heading))
+  * [Managing Server Requests](#sub-heading1)
+  * [Spike Out](#sub-heading2)
+  * [Goals & Questions](#sub-heading3)
+  * [Solutions to the problem](#sub-heading4)
+    +  [Pros and Cons](#sub-sub-heading1)
 - [The Data](#heading-1)
   * [Time Series](#sub-heading-1)
   * [Data Challenges and Exploration](#sub-heading-1)
@@ -36,21 +36,19 @@
 ## The Problem: Service Interruptions<a name="heading"></a>
 Business' use websites as a tool to interact with their users. When a website's service is unavailable it cost the [business revenue](https://www.forbes.com/sites/kellyclay/2013/08/19/amazon-com-goes-down-loses-66240-per-minute/#6c0b5db5495c). It becomes imperative that business' can maintain their website from service interruptions and to constantly be in connection with their customers. However, there are moments when unseen circumstances lead to sharp changes in users visiting the website. These sharp changes can be understood as anomalous spikes in the typical daily trends of webpage visits. Forecasting anomalies can lead to efficient server management. More specifically, it can allow web server companies to reduce service interruptions, by knowing in advance whether there is a pressing need to accomodate more server requests. 
 
-### Managing Server Requests
+### Managing Server Requests<a name="sub-heading1"></a>
 Currently, servers are designed accomdate requests up to a limit. A pre-determined limit on the number of requsts is set by web server manager at which point the server stops recieving requsts and forms a [cue.](https://serverfault.com/questions/140897/how-does-too-many-requests-make-a-server-crash/) As a result a user will often see a browswer response that reads "503 Service Unavailable". For the purpose of this context we are focusing on legitimate requests to the website and not another instance of this occurrence that is known as a denial-of-service attack [(DOS).](https://en.wikipedia.org/wiki/Denial-of-service_attack) Assuming that the requests are legitimate and despite their best-efforts to set the limit appropriately, web sites have still have service interruptions in recent history (LINKS).
 
-### Spike Out
+### Spike Out<a name="sub-heading2"></a>
 Spike Out is a tool which uses residuals from model to flag anomalous activity with website visitors. Spike Out is a project I attemped as data science fellow at Insight Data Science. 
 
-### Goals & Questions
-
+### Goals & Questions<a name="sub-heading3"></a>
 1) Find model that captures dynaimcs of web-traffic accurately.
   - What is the most approproate time-series models to capture the dynamics of web-traffic data?
-  
 2) Predict/Flag anomalous events in the data based on a selected threshold.
   - Based on the current data, what is the best threshold approach?
 
-### Potential Solutions to the problem
+### Potential Solutions to the problem<a name="sub-heading4"></a>
 1) Use a static threshold based on typical peak activity. 
 2) Use residuals from model to detect change in webtraffic behaviour. 
 
