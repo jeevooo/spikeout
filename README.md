@@ -27,8 +27,8 @@
       + [LSTM creation](#sub-sub-heading-232)
 - [Validation](#heading-3)
   * [Multiple Train-Test Splits](#sub-heading-31)
- - [Results](#heading-4)
- - [Conclusions](#heading-5)
+- [Results](#heading-4)
+- [Conclusions](#heading-5)
   * [Future Work](#sub-heading-51)
 
 ----
@@ -87,7 +87,7 @@ To narrow the field of websites being reported by analytics.usa.gov/, I decided 
 9)	va.gov/
 10)	usajobs.com/
 
-### Time Series<a name="sub-heading-1"></a>
+### Time Series<a name="sub-heading-11"></a>
 When plotting the time series of the tracked websites we immediately notice the presence of weekly trends in the data. To be more specific, the peak number of users during the weekdays are greater than on the weekends.  We also see that the time series is fairly stationary (i.e., does not have a changing mean over time). An augmented Dickey-Fuller test (ADF) provides a confirmation of this observation. 
 
 <p align='center'>
@@ -110,7 +110,7 @@ The usps.com/ data will be used for demonstrating the analysis performed in this
 <img src='images/uspstraintest.png' width='500'>
 </p>
 
-### Data Challenges and Exploration
+### Data Challenges and Exploration<a name="sub-heading-12"></a>
 Exploration of the data took several parts:
 1) Checking the sampling was consistent.
 
@@ -136,19 +136,19 @@ A fairly consisten mean and variation were present, but clear weekday/weekend tr
 
 Clear structure is present in the data demonstrating non-random process.
 
-## Models
+## Models<a name="heading-2"></a>
 Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
 
-### ARIMA
+### ARIMA<a name="sub-heading-21"></a>
 The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5). When fitting the model the ARIMA tended to have a poor fit. 
 
 <p align='center'>
 <img src='images/ARIMA.png' width='500'>
 </p>
 
-### ARIMAX
+### ARIMAX<a name="sub-heading-22"></a>
 The ARIMAX is an extension to the ARIMA which includes a exogenous covariates. The covariate is combined with the linear equation as a weighted value. The inclusion of a covariates changes the data to a multivariate dataset. 
-#### Feature Engineering
+#### Feature Engineering<a name="sub-sub-heading-221"></a>
 In order to establish a covariate with the data I thought to encode the dates of government shutdown. In order to verify that the government shutdown was an appropriate covariate, I performed a Granger Causality test. A significant F-test was found showing that the government shutdown is a predictor of active users. The opposite was also tested (i.e., whether active users drive the shut down) and was found to be not significant. ` 
 
 Government shutdown driving active users:
@@ -167,8 +167,8 @@ Following the inclusions of the feature in the dataset and then fitting an ARIMA
 <img src='images/ARIMAX.png' width='500'>
 </p>
 
-### LSTM
-#### Long-range correlations
+### LSTM<a name="sub-heading-23"></a>
+#### Long-range correlations<a name="sub-sub-heading-231"></a>
 Many complex and dynamical systems possess memory, more specifically called long-range correlations. This idea in a time series can be understood as the variabilty at short time scales being correlated to the variabilty at large time scales. One method for establishing the presence of long-range correlations is with a detrended fluctuation analysis (DFA). More details on the procedure can be found [here](https://www.physionet.org/physiotools/dfa/)
 
 After plugging the time series into the DFA algorithm the data produced a fractal scaling index (FSI) of 1.32. The FSI is calculated by taking the slope of the log-log plot of the window size versus mangitude of fluctuation. For context the fracal scaling index can range from 0-2. An FSI > 1.0 is indication of a long-range correlations. 
@@ -179,10 +179,11 @@ After plugging the time series into the DFA algorithm the data produced a fracta
 
 With the presence of long-range correlations it became clear that and LSTM model would be appropriate since it can capture long-range dependencies in time series. 
 
-#### LSTM creation
+#### LSTM creation<a name="sub-sub-heading-232"></a>
 The LSTM model in the 
 
-## Validation using multiple Train-Test Splits
+## Validation<a name="heading-3"></a>
+### Validation using multiple Train-Test Splits<a name="sub-heading-31"></a>
 Validation in machine learning is typically done with cross-validation. Due to the fact that time series data has temporal connections a typical cross-validation technique is insufficient for testing out the 
 
 Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. 
@@ -191,7 +192,7 @@ Multiple train test splits were used to validate the model. The approach takes a
 <img src='images/traintest.png' width='400'>
 </p>
 
-## Results
+## Results<a name="heading-4"></a>
 The results of the trian-test splits indicate that the LSTM model performs the best at predicting testing data with various lengths of training data. 
 
 <p align='center'>
@@ -204,10 +205,10 @@ Finally to test whether the LSTM on detecting a spike the data, the peaks (blunt
 
 The 75th percentile corresponded to 30298 active users and the predicted value of the timestep at the spike was 30500 active users. According to that threshold and prediction algorithm accurately predicted a spike occurence. 
 
-## Conclusions
+## Conclusions<a name="heading-5"></a>
 Spike Out is currently a proof-of-concept tool which provides a basis for detecting anomalies in web-traffic data. Event-related features show drastic changes in the ability to model active users on websites. Additionally, the LSTM approach shows the best ability to model web-traffic data, partly due to the presence of long-range correlations. The small sample of spikes with the present dataset limited a true test of anomaly detection reliability. However, at first pass the tool appears functional with the current forecasting approach. As a whole, Spike Out adds value to a web server management systems by provding an indication of potential future anomalies based on current and previous web-volume and additional features. 
 
-### Future Work
+### Future Work<a name="sub-heading-51"></a>
 Future work will aim to capture more data in order to turn the anomaly detection method into a classification problem. This will allow the tool to be tested using a true machine learning approach. Additionally, with an appropriate resolution in sampling (i.e., non-aggregated data), a more sensitive approach for detecting anomalies would be to measure the slope of several forecasts. This is becasue spikes typically have a sharper rise than typical volume rises observed in daily web volume. Lastly, this tool can be expanded by including additional event related features as an automated method by sourcing website related trends, such as tweets, news headlines, and google search results. 
 
 
