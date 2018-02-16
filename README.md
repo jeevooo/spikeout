@@ -173,7 +173,7 @@ Many complex and dynamical systems possess memory, more specifically called long
 After plugging the time series into the DFA algorithm the data produced a fractal scaling index (FSI) of 1.32. The FSI is calculated by taking the slope of the log-log plot of the window size versus mangitude of fluctuation. For context the fracal scaling index can range from 0-2. An FSI > 1.0 is indication of a long-range correlations. 
 
 <p align='center'>
-<img src='images/dfa.png' width='500'>
+<img src='images/dfa.png' width='400'>
 </p>
 
 With the presence of long-range correlations it became clear that and LSTM model would be appropriate since it can capture long-range dependencies in time series. 
