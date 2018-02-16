@@ -99,7 +99,7 @@ These types of websites serve as a prime example of why server management system
 Below is the univariate time series data for usps.com/:
 
 <p align='center'>
-<img src='images/uspsikes.png' width='500'>
+<img src='images/uspspikes.png' width='500'>
 </p>
 
 Looking at the data we notice there are clear spikes in the data that are event-related such as, 1) government-shutdown and, 2) the release of a stamp dedicated to Lena Horne. 
