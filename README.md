@@ -144,6 +144,13 @@ The ARIMA model can be described as an extension to regression, which uses the w
 
 <a href="http://www.codecogs.com/eqnedit.php?latex=(1~-~\phi_1&space;B~-~...~-~\phi_p&space;B^p)~(1~-~B)^d~y_t~=~c~&plus;~(1~&plus;~\theta_1&space;B~&plus;~...~&plus;~\theta_q&space;B^q)~e_t" target="_blank"><img src="http://latex.codecogs.com/gif.latex?(1~-~\phi_1&space;B~-~...~-~\phi_p&space;B^p)~(1~-~B)^d~y_t~=~c~&plus;~(1~&plus;~\theta_1&space;B~&plus;~...~&plus;~\theta_q&space;B^q)~e_t" title="(1~-~\phi_1 B~-~...~-~\phi_p B^p)~(1~-~B)^d~y_t~=~c~+~(1~+~\theta_1 B~+~...~+~\theta_q B^q)~e_t" /></a>
 
+where:
+  * <a href="http://www.codecogs.com/eqnedit.php?latex=B" target="_blank"><img src="http://latex.codecogs.com/gif.latex?B" title="B" /></a> is the backshift operator (for example, <a href="http://www.codecogs.com/eqnedit.php?latex=B(y_t)&space;=&space;y_{t-1}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?B(y_t)&space;=&space;y_{t-1}" title="B(y_t) = y_{t-1}" /></a>)
+  * <a href="http://www.codecogs.com/eqnedit.php?latex=$\phi_i$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$\phi_i$" title="$\phi_i$" /></a> are the parameters of the Auto-Regressive part of the model
+  * <a href="http://www.codecogs.com/eqnedit.php?latex=$\theta_i$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$\theta_i$" title="$\theta_i$" /></a> are the parameters of the Moving Average part of the model
+  * <a href="http://www.codecogs.com/eqnedit.php?latex=$c$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$c$" title="$c$" /></a> is a constant
+  * <a href="http://www.codecogs.com/eqnedit.php?latex=$e_t$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$e_t$" title="$e_t$" /></a> are white noise random errors (i.e., from a Gaussian distribution with zero mean).
+
 <p align='center'>
 <img src='images/ARIMA.png' width='500'>
 </p>
