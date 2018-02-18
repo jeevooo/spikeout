@@ -140,16 +140,23 @@ Clear structure is present in the data demonstrating non-random process.
 Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
 
 ### ARIMA<a name="sub-heading-21"></a>
-The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5).  
+The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). 
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;rY(t-2)&space;&plus;&space;et&space;&plus;&space;ae(t-5)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;rY(t-2)&space;&plus;&space;et&space;&plus;&space;ae(t-5)" title="Yt = rY(t-2) + et + ae(t-5)" /></a>
+
+Each feature above is specified in the model by setting a hyparameter:
+
+  * __Auto-Regressor (p):__ The dependence between an current observation and a specified number of previous observatios.
+  * __Integrated (q):__  A differening feature to remove non-stationarity (i.e., changing mean and variance over time). 
+  * __Moving Average (d):__ the dependence between an observed sample and the residual errors from a moving average model applied to __d__ lagged observations.
+  
+The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5):
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;rY(t-2)&space;&plus;&space;ae(t-5)&space;&plus;&space;et" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;rY(t-2)&space;&plus;&space;ae(t-5)&space;&plus;&space;et" title="Yt = rY(t-2) + ae(t-5) + et" /></a>
 
 where:
-  * <a href="http://www.codecogs.com/eqnedit.php?latex=B" target="_blank"><img src="http://latex.codecogs.com/gif.latex?B" title="B" /></a> is the backshift operator (for example, <a href="http://www.codecogs.com/eqnedit.php?latex=B(y_t)&space;=&space;y_{t-1}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?B(y_t)&space;=&space;y_{t-1}" title="B(y_t) = y_{t-1}" /></a>)
-  * <a href="http://www.codecogs.com/eqnedit.php?latex=$\phi_i$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$\phi_i$" title="$\phi_i$" /></a> are the parameters of the Auto-Regressive part of the model
-  * <a href="http://www.codecogs.com/eqnedit.php?latex=$\theta_i$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$\theta_i$" title="$\theta_i$" /></a> are the parameters of the Moving Average part of the model
-  * <a href="http://www.codecogs.com/eqnedit.php?latex=$c$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$c$" title="$c$" /></a> is a constant
-  * <a href="http://www.codecogs.com/eqnedit.php?latex=$e_t$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$e_t$" title="$e_t$" /></a> are white noise random errors (i.e., from a Gaussian distribution with zero mean).
+  * <a href="https://www.codecogs.com/eqnedit.php?latex=r" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r" title="r" /></a> is the autoregressive (i.e., lag) feature. 
+  * <a href="https://www.codecogs.com/eqnedit.php?latex=r\alpha" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r\alpha" title="r\alpha" /></a> is the moving average (i.e., error) feature.
+  * <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is a white noise error term (i.e., that random errors from a Guassian Distribution). 
 
 Below we can see that the model captures the general dynamics of usps webtraffic. But is gernally undrefitting or overfitting.
 
