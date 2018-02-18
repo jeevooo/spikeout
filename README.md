@@ -219,9 +219,7 @@ Validation in machine learning is typically done with cross-validation. Due to t
 
 Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. This validation approach best mimics a real scneario where more data will be added to the model. 
 
-<p align='center'>
-<img src='images/timeseriesvalidation.png' width='500'>
-</p>
+[INSERT VALIDATION]
 
 ## Results<a name="heading-4"></a>
 The results of the trian-test splits indicate that the LSTM model performs the best at predicting testing data with various lengths of training data. 
