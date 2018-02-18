@@ -151,11 +151,11 @@ Each feature above is specified in the model by setting a hyparameter:
   
 The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5):
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;rY(t-2)&space;&plus;&space;ae(t-5)&space;&plus;&space;et" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;rY(t-2)&space;&plus;&space;ae(t-5)&space;&plus;&space;et" title="Yt = rY(t-2) + ae(t-5) + et" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" title="Yt = rY(t-2) + \alpha \epsilon (t-5) + \epsilon t" /></a>
 
 where:
   * <a href="https://www.codecogs.com/eqnedit.php?latex=r" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r" title="r" /></a> is the autoregressive (i.e., lag) feature. 
-  * <a href="https://www.codecogs.com/eqnedit.php?latex=r\alpha" target="_blank"><img src="https://latex.codecogs.com/gif.latex?r\alpha" title="r\alpha" /></a> is the moving average (i.e., error) feature.
+  * <a href="https://www.codecogs.com/eqnedit.php?latex=\alpha" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\alpha" title="\alpha" /></a> is the moving average (i.e., error) feature.
   * <a href="https://www.codecogs.com/eqnedit.php?latex=\epsilon" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\epsilon" title="\epsilon" /></a> is a white noise error term (i.e., that random errors from a Guassian Distribution). 
 
 Below we can see that the model captures the general dynamics of usps webtraffic. But is gernally undrefitting or overfitting.
