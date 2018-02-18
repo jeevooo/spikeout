@@ -166,8 +166,17 @@ Below we can see that the model captures the general dynamics of usps webtraffic
 
 ### ARIMAX<a name="sub-heading-22"></a>
 The ARIMAX is an extension to the ARIMA which includes a exogenous covariates. The covariate is combined with the linear equation as a weighted value. The inclusion of a covariates changes the data to a multivariate dataset. 
+
 #### Feature Engineering<a name="sub-sub-heading-221"></a>
-In order to establish a covariate with the data I thought to encode the dates of government shutdown. In order to verify that the government shutdown was an appropriate covariate, I performed a Granger Causality test. A significant F-test was found showing that the government shutdown is a predictor of active users. The opposite was also tested (i.e., whether active users drive the shut down) and was found to be not significant. ` 
+In order to establish a covariate with the data I thought to encode the dates of government shutdown and day of the week (weekend/weekday) with the same paramters of the previous mode (i.e., AR(2), MA(5)). 
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;\beta&space;x1t&space;&plus;&space;\beta&space;x2t&space;&plus;&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;\beta&space;x1t&space;&plus;&space;\beta&space;x2t&space;&plus;&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" title="Yt = \beta x1t + \beta x2t + rY(t-2) + \alpha \epsilon (t-5) + \epsilon t" /></a>
+
+where:
+  * <a href="https://www.codecogs.com/eqnedit.php?latex=\beta&space;x1t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\beta&space;x1t" title="\beta x1t" /></a> is the first weighted covariate feature. 
+  * <a href="https://www.codecogs.com/eqnedit.php?latex=\beta&space;x2t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\beta&space;x2t" title="\beta x2t" /></a> is the second weighted covariate feature. 
+
+In order to verify that the government shutdown was an appropriate covariate, I performed a Granger Causality test. A significant F-test was found showing that the government shutdown is a predictor of active users. The opposite was also tested (i.e., whether active users drive the shut down) and was found to be not significant.
 
 Government shutdown driving active users:
 <p align='center'>
