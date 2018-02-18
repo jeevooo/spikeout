@@ -140,9 +140,9 @@ Clear structure is present in the data demonstrating non-random process.
 Due to exploratory steps taken to above understand the data, the first attempt at modeling web-traffic was with the Autoregressive Integrated Moving Average (ARIMA) and its variation ARIMAX models. Additional analysis of the data lead to the use of an variation of a recurrent neural network (RNN) called the long short-term memory (LSTM) neural network. 
 
 ### ARIMA<a name="sub-heading-21"></a>
-The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5). When fitting the model the ARIMA tended to have a poor fit. 
+The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5).  
 
-<a href="http://www.codecogs.com/eqnedit.php?latex=(1~-~\phi_1&space;B~-~...~-~\phi_p&space;B^p)~(1~-~B)^d~y_t~=~c~&plus;~(1~&plus;~\theta_1&space;B~&plus;~...~&plus;~\theta_q&space;B^q)~e_t" target="_blank"><img src="http://latex.codecogs.com/gif.latex?(1~-~\phi_1&space;B~-~...~-~\phi_p&space;B^p)~(1~-~B)^d~y_t~=~c~&plus;~(1~&plus;~\theta_1&space;B~&plus;~...~&plus;~\theta_q&space;B^q)~e_t" title="(1~-~\phi_1 B~-~...~-~\phi_p B^p)~(1~-~B)^d~y_t~=~c~+~(1~+~\theta_1 B~+~...~+~\theta_q B^q)~e_t" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;rY(t-2)&space;&plus;&space;et&space;&plus;&space;ae(t-5)" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;rY(t-2)&space;&plus;&space;et&space;&plus;&space;ae(t-5)" title="Yt = rY(t-2) + et + ae(t-5)" /></a>
 
 where:
   * <a href="http://www.codecogs.com/eqnedit.php?latex=B" target="_blank"><img src="http://latex.codecogs.com/gif.latex?B" title="B" /></a> is the backshift operator (for example, <a href="http://www.codecogs.com/eqnedit.php?latex=B(y_t)&space;=&space;y_{t-1}" target="_blank"><img src="http://latex.codecogs.com/gif.latex?B(y_t)&space;=&space;y_{t-1}" title="B(y_t) = y_{t-1}" /></a>)
@@ -150,6 +150,8 @@ where:
   * <a href="http://www.codecogs.com/eqnedit.php?latex=$\theta_i$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$\theta_i$" title="$\theta_i$" /></a> are the parameters of the Moving Average part of the model
   * <a href="http://www.codecogs.com/eqnedit.php?latex=$c$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$c$" title="$c$" /></a> is a constant
   * <a href="http://www.codecogs.com/eqnedit.php?latex=$e_t$" target="_blank"><img src="http://latex.codecogs.com/gif.latex?$e_t$" title="$e_t$" /></a> are white noise random errors (i.e., from a Gaussian distribution with zero mean).
+
+Below we can see that the model captures the general dynamics of usps webtraffic. But is gernally undrefitting or overfitting.
 
 <p align='center'>
 <img src='images/ARIMA.png' width='500'>
