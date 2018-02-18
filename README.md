@@ -36,6 +36,10 @@
 ## The Problem: Service Interruptions<a name="heading"></a>
 Business' use websites as a tool to interact with their users. When a website's service is unavailable it cost the [business revenue](https://www.forbes.com/sites/kellyclay/2013/08/19/amazon-com-goes-down-loses-66240-per-minute/#6c0b5db5495c). It becomes imperative that business' can maintain their website from service interruptions and to constantly be in connection with their customers. However, there are moments when unseen circumstances lead to sharp changes in users visiting the website. These sharp changes can be understood as anomalous spikes in the typical daily trends of webpage visits. Forecasting anomalies can lead to efficient server management. More specifically, it can allow web server companies to reduce service interruptions, by knowing in advance whether there is a pressing need to accomodate more server requests. 
 
+<p align='center'>
+<img src='images/503service.png' width='500'>
+</p>
+
 ### Managing Server Requests<a name="sub-heading1"></a>
 Currently, servers are designed accomdate requests up to a limit. A pre-determined limit on the number of requsts is set by web server manager at which point the server stops recieving requsts and forms a [cue.](https://serverfault.com/questions/140897/how-does-too-many-requests-make-a-server-crash/) As a result a user will often see a browswer response that reads "503 Service Unavailable". For the purpose of this context we are focusing on legitimate requests to the website and not another instance of this occurrence that is known as a denial-of-service attack [(DOS).](https://en.wikipedia.org/wiki/Denial-of-service_attack) Assuming that the requests are legitimate and despite their best-efforts to set the limit appropriately, web sites have still have service interruptions in recent history.
 
@@ -216,7 +220,7 @@ Validation in machine learning is typically done with cross-validation. Due to t
 Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. This validation approach best mimics a real scneario where more data will be added to the model. 
 
 <p align='center'>
-<img src='images/validation.png' width='400'>
+<img src='images/timeseriesvalidation.png' width='500'>
 </p>
 
 ## Results<a name="heading-4"></a>
