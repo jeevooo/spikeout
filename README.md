@@ -211,12 +211,12 @@ The LSTM model in the
 
 ## Validation<a name="heading-3"></a>
 ### Validation using multiple Train-Test Splits<a name="sub-heading-31"></a>
-Validation in machine learning is typically done with cross-validation. Due to the fact that time series data has temporal connections a typical cross-validation technique is insufficient for testing out the 
+Validation in machine learning is typically done with cross-validation. Due to the fact that time series data has temporal connections a typical cross-validation technique is insufficient for testing the model on various parts of the data.
 
-Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. 
+Multiple train test splits were used to validate the model. The approach takes a fixed testing length and uses various sizes of the training data to predict the test set. This validation approach best mimics a real scneario where more data will be added to the model. 
 
 <p align='center'>
-<img src='images/traintest.png' width='400'>
+<img src='images/validation.png' width='400'>
 </p>
 
 ## Results<a name="heading-4"></a>
