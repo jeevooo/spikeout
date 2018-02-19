@@ -211,7 +211,7 @@ After plugging the time series into the DFA algorithm the data produced a fracta
 With the presence of long-range correlations it became clear that and LSTM model would be appropriate since it can capture long-range dependencies in time series. 
 
 #### LSTM creation<a name="sub-sub-heading-232"></a>
-The LSTM model in the 
+The LSTM explanation and model details to follow. 
 
 ## Validation<a name="heading-3"></a>
 ### Validation using multiple Train-Test Splits<a name="sub-heading-31"></a>
