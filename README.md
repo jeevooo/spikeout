@@ -78,7 +78,7 @@ I captured the data every 5 minutes without delay for 18 days in an AWS server. 
 <img src='images/datacollection2.png' width='500'>
 </p>
 
-To narrow the field of websites being reported by analytics.usa.gov/, I decided to cut out url’s that were not home pages, such as:
+To narrow the field of websites being reported by [analytics.usa.gov/](https://analytics.usa.gov/), I decided to cut out url’s that were not home pages, such as:
 
 1)	usps.com/
 2)	weather.gov/
@@ -211,7 +211,9 @@ After plugging the time series into the DFA algorithm the data produced a fracta
 With the presence of long-range correlations it became clear that and LSTM model would be appropriate since it can capture long-range dependencies in time series. 
 
 #### LSTM creation<a name="sub-sub-heading-232"></a>
-The LSTM explanation and model details to follow. 
+The long short-term memory (LSTM) neural network architecture is an extension of of the reucrrent neural network (RNN) architecture. An RNN is a type of neural network that has feedback, which is carried over from the previous output. What differentiates an RNN from LSTM is that feedback can be carried over from outputs several steps prior, which is where the "memory" component of the model enters as a distinguishing factor. A more detailed explanation on the details of LSTM architecture [here](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and [here](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714). 
+
+Additional details on the LSTM explanation and model to follow. 
 
 ## Validation<a name="heading-3"></a>
 ### Validation using multiple Train-Test Splits<a name="sub-heading-31"></a>
