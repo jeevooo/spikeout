@@ -213,14 +213,14 @@ With the presence of long-range correlations it became clear that and LSTM model
 #### LSTM creation<a name="sub-sub-heading-232"></a>
 The long short-term memory (LSTM) neural network architecture is an extension of of the reucrrent neural network (RNN) architecture. An RNN is a type of neural network that has feedback, which is carried over from the previous output. What differentiates an RNN from LSTM is that feedback can be carried over from outputs several steps prior, which is where the "memory" component of the model enters as a distinguishing factor. 
 
-Generally, the LSTM model utilizes gating to control the "memory" of the previous states contribution to the current output. Below is a diagram of a LSTM architecture. 
+Generally, the LSTM model utilizes gating to control the "memory" of the previous states contribution to the current output. Below is a diagram of a LSTM architecture: 
 
 <p align='center'>
 <img src='images/LSTMarchitecture.png' width='400'>
 </p>
+[source](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714)
 
-A more detailed explanation on the details of LSTM architecture [here](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and [here](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714). 
-
+Detailed explanation on the details of LSTM architecture [here](http://colah.github.io/posts/2015-08-Understanding-LSTMs/).
 
 Additional details on the LSTM explanation and model to follow. 
 
