@@ -219,7 +219,7 @@ Generally, the LSTM model utilizes gating to control the "memory" of the previou
 <img src='images/LSTMarchitecture.png' width='400'>
 </p>
 
-The [source](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714).
+<center>The [source](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714).</center>
 
 
 Detailed explanation on the details of LSTM architecture [here](http://colah.github.io/posts/2015-08-Understanding-LSTMs/).
