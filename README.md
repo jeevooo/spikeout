@@ -216,7 +216,7 @@ The long short-term memory (LSTM) neural network architecture is an extension of
 Generally, the LSTM model utilizes gating to control the "memory" of the previous states contribution to the current output. Below is a diagram of a LSTM architecture. 
 
 <p align='center'>
-<img src='images/LSTMarchitecture.png.png' width='400'>
+<img src='images/LSTMarchitecture.png' width='400'>
 </p>
 
 A more detailed explanation on the details of LSTM architecture [here](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) and [here](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714). 
