@@ -218,13 +218,11 @@ Generally, the LSTM model utilizes gating to control the "memory" of the previou
 <p align='center'>
 <img src='images/LSTMarchitecture.png' width='400'>
 </p>
-
-<center>The [source](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714).</center>
-
+The [source](https://medium.com/mlreview/understanding-lstm-and-its-diagrams-37e2f46f1714).
 
 Detailed explanation on the details of LSTM architecture [here](http://colah.github.io/posts/2015-08-Understanding-LSTMs/).
 
-Additional details on the LSTM explanation and model to follow. 
+The model used for LSTM creation included a sequential laqyer with a hidding layer. 
 
 ## Validation<a name="heading-3"></a>
 ### Validation using multiple Train-Test Splits<a name="sub-heading-31"></a>
