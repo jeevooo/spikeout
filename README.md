@@ -146,14 +146,13 @@ Due to exploratory steps taken to above understand the data, the first attempt a
 ### ARIMA<a name="sub-heading-21"></a>
 The ARIMA model can be described as an extension to regression, which uses the weighted sums of lags (AR parameter) combined with weighted sum of errors (MA paramter). 
 
-
 Each feature above is specified in the model by setting a hyparameter:
 
   * __Auto-Regressor (p):__ The dependence between an current observation and a specified number of previous observatios.
   * __Integrated (q):__  A differening feature to remove non-stationarity (i.e., changing mean and variance over time). 
   * __Moving Average (d):__ the dependence between an observed sample and the residual errors from a moving average model applied to __d__ lagged observations.
   
-The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the model used were AR(2), MA(5):
+The parameters of an ARIMA can be guided by the partial autocorrelation (PACF) and autocorrelation (ACF) functions for the AR (lag feature) and MA (error feature) parameters, respectively. Alternatively, a grid search can be performed. The PACF and ACF were used to guide the choices of parameters. The parameters for the in-sample prediction model were AR(2), MA(5):
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" title="Yt = rY(t-2) + \alpha \epsilon (t-5) + \epsilon t" /></a>
 
@@ -172,7 +171,7 @@ Below we can see that the model captures the general dynamics of usps webtraffic
 The ARIMAX is an extension to the ARIMA which includes a exogenous covariates. The covariate is combined with the linear equation as a weighted value. The inclusion of a covariates changes the data to a multivariate dataset. 
 
 #### Feature Engineering<a name="sub-sub-heading-221"></a>
-In order to establish a covariate with the data I thought to encode the dates of government shutdown and day of the week (weekend/weekday) with the same paramters of the previous mode (i.e., AR(2), MA(5)). 
+In order to establish a covariate with the data I thought to encode the dates of government shutdown and day of the week (weekend/weekday) with the same paramters of the previous mode (i.e., AR(2), MA(5)). The in-sample prediction looked as follows: 
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Yt&space;=&space;\beta&space;x1t&space;&plus;&space;\beta&space;x2t&space;&plus;&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Yt&space;=&space;\beta&space;x1t&space;&plus;&space;\beta&space;x2t&space;&plus;&space;rY(t-2)&space;&plus;&space;\alpha&space;\epsilon&space;(t-5)&space;&plus;&space;\epsilon&space;t" title="Yt = \beta x1t + \beta x2t + rY(t-2) + \alpha \epsilon (t-5) + \epsilon t" /></a>
 
