@@ -14,7 +14,7 @@ import requests
 def data_collection():
     url = 'https://analytics.usa.gov/data/live/all-pages-realtime.csv'
     username = 'postgres'
-    password = 'iluvANI87'
+    password = '*********'
     host     = 'localhost'
     port     = '5432'            # default port that postgres listens on
     db_name = 'govtraffic'
